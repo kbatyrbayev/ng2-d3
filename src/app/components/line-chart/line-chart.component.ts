@@ -10,7 +10,7 @@ export class LineChartComponent implements OnInit {
 
   padding = [20, 30];
 
-  data = [
+  data: IData[] = [
     { date: 0, value: 0 }, 
     { date: 10, value: 20 }, 
     { date: 20, value: 60 }, 
@@ -30,8 +30,8 @@ export class LineChartComponent implements OnInit {
     let svg = d3.select('#svg');
     let container = d3.select('#container');
 
-    let width = svg.node().getBoundingClientRect().width;
-    let height = svg.node().getBoundingClientRect().height;
+    let width = (svg.node() as HTMLElement).getBoundingClientRect().width;
+    let height = (svg.node() as HTMLElement).getBoundingClientRect().height;
 
     let xAxis = d3.scaleLinear()
                   .domain([0, 100])
@@ -54,15 +54,15 @@ export class LineChartComponent implements OnInit {
       .attr("transform", "translate(0," + (height - this.padding[1]) + ")")
       .call(make_x_gridlines()
         .tickSize(-(height - this.padding[1] - this.padding[0]))
-        .tickFormat("")
-      ).style('color', 'grey').style('opacity', 0.2);
+      ).style('color', 'grey').style('opacity', 0.2)
+      .selectAll('text').remove();
 
     svg.append('path')
     .datum(this.data)
     .attr('fill', 'none')
     .attr('stroke', 'white')
     .attr('stroke-width', 1.5)
-    .attr('d', d3.line()
+    .attr('d', d3.line<IData>()
                 .x(function(d) {return xAxis(d.date)})
                 .y(function(d) {return yAxis(d.value)})
                 );
@@ -99,7 +99,7 @@ export class LineChartComponent implements OnInit {
           .style('border-radius', '5px')
           .style('width', '100px')
           .style('text-align', 'center')
-          .html(d.value);
+          .html(`${d.value}`);
       })
       .on('mouseout', function() {
         container.selectAll(".tooltip").remove();
@@ -112,4 +112,9 @@ export class LineChartComponent implements OnInit {
 
   }
 
+}
+
+interface IData {
+  date: number;
+  value: number;
 }
