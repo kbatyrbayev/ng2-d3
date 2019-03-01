@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { MapEditorComponent } from './components/map-editor/map-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent
+    LineChartComponent,
+    MapEditorComponent
   ],
   imports: [
     BrowserModule,
