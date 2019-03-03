@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Deploy angular app in Github
 
-`npm i angular-cli-ghpages --save-dev`.
-`ng build --prod --base-href "/REPOSITORY_NAME/"` in my case `ng build --prod --base-href "/ng2-d3/"`.
-`npx ngh --dir=dist/[PROJECTNAME]` in my case `npx ngh --dir=dist/ng2-d3`.
-And in the settings need to chang GitHub Pages to branch `gh-pages`.
+`npm i angular-cli-ghpages --save-dev` <br />
+`ng build --prod --base-href "/REPOSITORY_NAME/"` in my case `ng build --prod --base-href "/ng2-d3/"` <br />
+`npx ngh --dir=dist/[PROJECTNAME]` in my case `npx ngh --dir=dist/ng2-d3` <br />
+And in the settings need to chang GitHub Pages to branch `gh-pages`
