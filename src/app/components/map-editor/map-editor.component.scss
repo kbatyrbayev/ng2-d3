@@ -50,6 +50,16 @@
     background-repeat: no-repeat;
 }
 
+.iline {
+    position: absolute;
+    cursor: pointer;
+    top: 75px;
+    left: 10px;
+    &.active {
+        color: red;
+    }
+} 
+
 .right-side {
     border: 1px solid grey;
     position: relative;

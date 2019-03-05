@@ -73,8 +73,8 @@ export class MapEditorComponent implements OnInit {
       })
       .on('end', function() {
         let div = d3.select(this);
-        div.style("top", div.attr('init-x')+'px');
-        div.style("left", div.attr('init-y')+'px');
+        div.style("top", div.attr('init-y')+'px');
+        div.style("left", div.attr('init-x')+'px');
         let iclass = div.attr('iclass');
         let mouseCoordinates = d3.mouse(this as any);
 
@@ -102,8 +102,8 @@ export class MapEditorComponent implements OnInit {
             d3.select('#map').append('use')
               .attr('id', `ipoint-${id}`)
               .attr('href', '#point')
-              .attr('x', mouseCoordinates[0] - leftSideWidth + divScrollLeft)
-              .attr('y', mouseCoordinates[1] + divScrollTop)
+              .attr('x', mouseCoordinates[0] - leftSideWidth + divScrollLeft + 75)
+              .attr('y', mouseCoordinates[1] + divScrollTop + 25)
               .style('cursor', 'pointer')
               .classed('ipoint', true)
               .call(
@@ -165,20 +165,15 @@ export class MapEditorComponent implements OnInit {
 
   }
 
-  initMap2() {
-    let svgMap = d3.select('#map')
-      .on('mousemove', function() {
-        console.log('asfd', d3.event.x)
-      });
 
-    function handleMouseOver(d, i) {
-      console.log(d, i)
-    }
+  lineSelected = false;
+  selectLine() {
+    this.lineSelected = true;
+    d3.select('#map')
+      .style('cursor', 'crosshair');
 
-  }
+    
 
-  onClick(eve) {
-    console.log(eve)
   }
 
 }

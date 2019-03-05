@@ -10,9 +10,13 @@
         <div class="iwifi draggable" init-x="10" init-y="10" iclass="iwifi">
             <img src="./assets/wifi.svg" alt="">
         </div>
-        <div class="ipoint draggable" init-x="10" init-y="75" iclass="ipoint">
+        <div class="ipoint draggable" init-x="75" init-y="10" iclass="ipoint">
             <img src="./assets/point.svg" alt="">
         </div>
+        <div class="iline" [class.active]="lineSelected" init-x="10" init-y="75" iclass="ipoint" (click)="selectLine()">
+            Line
+        </div>
+
     </div>
 
 
